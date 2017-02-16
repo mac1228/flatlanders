@@ -4,8 +4,12 @@
   app.controller('StoreController', ['$http', function($http){
     var store = this;
     store.products = [];
-    $http.get('/store-products.json').success(function(data){
-      store.products = data;
+    $http.get('store-products.json').then(function(response){
+      console.log('success');
+      store.products = response.data;
+    },
+    function(response){
+      console.log(response.data);
     });
     
   }]);
